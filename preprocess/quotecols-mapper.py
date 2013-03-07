@@ -1,7 +1,11 @@
+"""Double-quotes quotes in Crosswikis data, and puts quotes around text fields.
+This format is necessary to import the data into Apache Derby.
+"""
 import sys
 
 def main():
   for line in sys.stdin:
+    line = line.replace('"', '""')
     lineParts = line.split('\t')
     print '\t'.join([
       '"{0}"'.format(lineParts[0]),
